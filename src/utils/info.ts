@@ -1,6 +1,6 @@
 const info = {
   logo: '/src/assets/image/home/logo.png',  //30*30
-  titleShow: '2',  // 1 img  2 text
+  titleShow: '1',  // 1 img  2 text
   titleImg: '/src/assets/image/home/title.png',  //140*40
   titleText: 'BUBBLE GAME',
   titleSize: '30px',
