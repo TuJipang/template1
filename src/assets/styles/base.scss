@@ -1,0 +1,474 @@
+@charset "UTF-8";
+@import "common/reset";
+@import "common/common";
+
+html,
+body,
+#app,
+.view {
+  height: 100%;
+  width: 100%;
+  // overflow: hidden;
+}
+
+html {
+  font-size: 12px;
+  -webkit-overflow-scrolling: touch;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  // position: fixed;
+  // left: 0;
+  // right: 0;
+  // top: 0;
+  // bottom: 0;
+  background-color: #fff;
+  font-size: 12px;
+
+  // nprogress
+  #nprogress {
+    $c: #1aad19;
+
+    .bar {
+      background: $c;
+      height: 2.5px;
+    }
+
+    .peg {
+      // box-shadow: none;
+      box-shadow: 0 0 10px $c, 0 0 5px $c;
+    }
+
+    .spinner-icon {
+      border-top-color: $c;
+      border-left-color: $c;
+    }
+  }
+}
+
+
+//基础布局，版面
+.wrap {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+article.main {
+  flex: 1; //overflow: hidden;
+  height: 100%;
+  padding-top: 1px;
+  margin-top: -1px; // 修复-webkit-overflow-scrolling: touch;导致ios上滑动时产生黑色背景
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: $bg-base;
+}
+
+article.scrollHide {
+  overflow: hidden;
+}
+
+.infinite-scroll {
+  background: #f7f7f7;
+  -webkit-overflow-scrolling: touch;
+}
+
+//vue
+[v-cloak] {
+  visibility: hidden;
+}
+
+.v-cloak--block,
+.v-cloak--inline,
+.v-cloak--inlineBlock {
+  display: none;
+}
+
+
+
+/****************************************************/
+
+// 引入头部
+// @import "components/header";
+// // 首页底部导航
+// //@import "components/appNav";
+// // 引入动画效果
+// @import "components/keyframes";
+// // 引入字体图标
+// //@import "components/fonts";
+// // 提示弹窗
+// @import "modalToast";
+// // 简单弹窗
+// @import "alert";
+
+
+/****************************************************/
+
+// 白色背景
+.bgWhite {
+  background: #fff;
+}
+
+.bgGray {
+  background: #f7f7f7;
+}
+
+// 字体颜色
+.col3 {
+  color: #333 !important
+}
+
+// 全屏
+.fullPosition {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  background: #f7f7f7;
+}
+
+//半透明遮罩
+.opacity {
+  z-index: 88;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, .6);
+}
+
+// border-bottom
+.border-bottom {
+  @include border1px(#e6e6e6);
+}
+
+.border-top {
+  @include border1px(#e6e6e6, top);
+}
+
+.border-right {
+  @include border1px(#AEAEAE, right, dashed);
+}
+
+#nprogress .bar {
+  background: #1aad19;
+}
+
+// user agent stylesheet
+input::-webkit-input-placeholder {
+  -webkit-text-fill-color: #9c9fa1;
+  color: #9c9fa1;
+}
+
+// 文字超出隐藏
+// 单行超出...
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.line-clamp {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.line-clamp-1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+// .arrow(#ccc, 35rpx, 3rpx, 15rpx);
+.arrow {
+  width: 0.2rem;
+  height: 0.2rem;
+  border-top: 1px solid #999;
+  border-right: 1px solid #999;
+  transform: rotate(45deg);
+}
+
+
+// flex
+.flex {
+  width: 100%;
+  display: flex; // flex | inline-flex
+  flex-direction: row; // 排列方向: row | row-reverse | column | column-reverse
+  flex-wrap: nowrap; // 换行方式: nowrap | wrap | wrap-reverse
+  justify-content: center; // 主轴对齐方式: flex-start | flex-end | center | space-between | space-around
+  align-items: center; // 交叉轴对齐方式: flex-start | flex-end | center | baseline | stretch;
+  align-content: stretch; // 多根轴线的对齐方式: flex-start | flex-end | center | space-between | space-around | stretch
+}
+
+.flex-jcfs {
+  justify-content: flex-start;
+}
+
+.flex-jcfe {
+  justify-content: flex-end;
+}
+
+.flex-jcsb {
+  justify-content: space-between;
+}
+
+.flex-aifs {
+  align-items: flex-start;
+}
+
+.flex-cunpon {
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.flex-aife {
+  align-items: flex-end;
+}
+
+.flex-item {
+  flex: 1;
+  align-self: center; // 单个项目对齐方式(覆盖align-items)： auto | flex-start | flex-end | center | baseline | stretch;
+
+  .flex-initial {
+    flex: initial;
+  }
+
+  .flex-center {
+    text-align: center;
+  }
+}
+
+.footer-btn {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 46.88px;
+  background-color: #036DED;
+  color: #fff;
+  // @include font-dpr(30px);
+  line-height: 46.88px;
+  text-align: center;
+}
+
+/***********************************************
+    vant样式
+***********************************************/
+.van-button--primary {
+  color: #fff !important;
+  background-color: #036DED !important;
+  border: 1px solid #036DED !important;
+}
+
+.van-button--bottom-action.van-button--primary {
+  background-color: #036DED !important;
+}
+
+.van-button--bottom-action.van-button--primary[disabled="disabled"] {
+  background-color: #b3b1b1 !important;
+  border: 1px solid #b3b1b1 !important;
+}
+
+.van-button--bottom-action[disabled="disabled"] {
+  background-color: #b3b1b1 !important;
+  border: 1px solid #b3b1b1 !important;
+  border-right: 1px solid #cecaca !important;
+}
+
+.van-checkbox--checked {
+  color: #fff !important;
+  border-color: #EB5345 !important;
+  background-color: #EB5345 !important;
+}
+
+.list-service {
+  .van-icon {
+    color: #036DED !important;
+
+    &.van-cell__right-icon {
+      color: #999 !important;
+    }
+  }
+}
+
+.van-checkbox__icon {
+  $h: 16px;
+  width: $h !important;
+  height: $h !important;
+  line-height: $h !important;
+  vertical-align: middle !important;
+}
+
+.van-icon-location {
+  color: #036DED !important;
+}
+
+.van-submit-bar__bar .van-checkbox {
+  margin-left: 11.72px !important;
+}
+
+.van-submit-bar .van-button {
+  background-color: #036DED !important;
+  border: 1px solid #036DED !important;
+}
+
+.list-cell .van-cell__left-icon {
+  color: #036DED !important;
+}
+
+.list-cell {
+  .van-hairline--top-bottom {
+    &:after {
+      border: 0 !important;
+    }
+  }
+}
+
+.van-swipe__indicator--active {
+  background-color: #6cadfb !important;
+}
+
+.van-cell {
+  // @include font-dpr(26px);
+  font-size: 14px !important;
+}
+
+.list-cell {
+  .van-cell {
+    font-size: 16px !important;
+  }
+}
+
+.van-button--normal {
+  // @include font-dpr(28px);
+  font-size: 16px !important;
+}
+
+.van-submit-bar__bar {
+  // @include font-dpr(30px);
+  font-size: 17px !important;
+}
+
+.van-goods-action {
+  //购买工具栏
+  z-index: 2 !important;
+}
+
+.self-extract {
+  .van-cell {
+    // @include font-dpr(23px);
+    font-size: 14px !important;
+    padding: 8.79px 11.72px !important;
+    // background-color: #cde2fb!important;
+  }
+}
+
+.van-address-edit {
+  .van-cell {
+    font-size: 15px !important;
+    padding: 14px 15px;
+  }
+
+}
+
+.van-dialog__confirm,
+.van-dialog__confirm:active {
+  color: #036ded;
+}
+
+.van-dialog__message {
+  text-align: center;
+}
+
+
+.van-stepper__minus,
+.van-stepper__plus {
+  border: 1px solid #ddd;
+}
+
+.van-stepper__minus::before,
+.van-stepper__plus::before {
+  width: 9PX !important;
+  height: 1PX !important;
+}
+
+.van-stepper__minus {
+  width: 30px;
+  height: 25px;
+  background: #fff;
+}
+
+.van-stepper__minus::after,
+.van-stepper__plus::after {
+  width: 1PX !important;
+  height: 9PX !important;
+}
+
+.van-stepper__plus {
+  width: 30px;
+  height: 25px;
+  background: #fff;
+}
+
+.van-stepper__input {
+  width: 52px;
+  height: 21px;
+  background: #fff;
+  border: 1px solid #ddd;
+}
+
+.van-picker__cancel,
+.van-picker__confirm {
+  font-size: 14px;
+}
+
+.swipe-box .van-swipe {
+  border-radius: 0;
+}
+
+[class*=van-hairline]::after {
+  border-color: #e6e6e6;
+}
+
+
+
+/* comondity */
+.rmb {
+  // @include font-dpr(20px);
+}
+
+.goods-info {
+  .van-cell-text {
+    color: #999 !important;
+    // @include font-dpr(22px);
+    font-size: 13px !important;
+  }
+}
+
+.goods-purchase {
+  .van-hairline--bottom:last-child {
+    &:after {
+      border-bottom-width: 0px !important;
+    }
+  }
+}
+
+.van-toast--text {
+  // width: 200px !important;
+  height: 200px !important;
+  font-size: 40px !important;
+
+}
